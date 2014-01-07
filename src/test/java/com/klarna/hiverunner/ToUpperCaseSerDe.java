@@ -17,8 +17,7 @@
 package com.klarna.hiverunner;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hive.serde.Constants;
-import org.apache.hadoop.hive.serde2.AbstractSerDe;
+import org.apache.hadoop.hive.serde2.SerDe;
 import org.apache.hadoop.hive.serde2.SerDeException;
 import org.apache.hadoop.hive.serde2.SerDeStats;
 import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector;
@@ -32,13 +31,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-public class ToUpperCaseSerDe extends AbstractSerDe {
+public class ToUpperCaseSerDe implements SerDe {
 
     private List<String> columns;
 
     @Override
     public void initialize(Configuration configuration, Properties properties) throws SerDeException {
-        columns = Arrays.asList(((String) properties.get(Constants.LIST_COLUMNS)).split(","));
+        columns = Arrays.asList(((String) properties.get("columns")).split(","));
     }
 
     @Override

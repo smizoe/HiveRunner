@@ -152,7 +152,6 @@ class StandaloneHiveServerContext implements HiveServerContext {
         * Switch off all optimizers otherwise we didn't
         * manage to contain the map reduction within this JVM.
         */
-        conf.setBoolVar(HIVE_INFER_BUCKET_SORT, false);
         conf.setBoolVar(HIVEMETADATAONLYQUERIES, false);
         conf.setBoolVar(HIVEOPTINDEXFILTER, false);
         conf.setBoolVar(HIVECONVERTJOIN, false);
