@@ -57,6 +57,17 @@
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-core</artifactId>
             <version>${hadoop.mr.version}</version>
+            <exclusions>
+                <!--
+                hadoop-core-2.0.0-mr1-cdh4.4.0 depends on zookeeper that depends on jline
+                that has a strange compile time dependency on an old JUnit.
+                See https://issues.apache.org/jira/browse/ZOOKEEPER-1718.
+                -->
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
