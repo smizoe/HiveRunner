@@ -19,7 +19,7 @@ package com.klarna.hiverunner;
 import com.klarna.reflection.ReflectionUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hive.conf.HiveConf;
-import org.apache.hadoop.hive.shims.Hadoop20SShims;
+import org.apache.hadoop.hive.shims.Hadoop23Shims;
 import org.apache.hadoop.hive.shims.ShimLoader;
 import org.junit.rules.TemporaryFolder;
 
@@ -101,7 +101,7 @@ class StandaloneHiveServerContext implements HiveServerContext {
          *
          * Search for usage of org.apache.hadoop.hive.shims.HadoopShims#isLocalMode to find other affects of this.
         */
-        ReflectionUtils.setStaticField(ShimLoader.class, "hadoopShims", new Hadoop20SShims() {
+        ReflectionUtils.setStaticField(ShimLoader.class, "hadoopShims", new Hadoop23Shims() {
             @Override
             public boolean isLocalMode(Configuration conf) {
                 return false;
