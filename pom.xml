@@ -124,7 +124,7 @@
                             <goal>jar</goal>
                         </goals>
                         <configuration>
-                            <classifier>cdh4.4.0-mix</classifier>
+                            <classifier>cdh4_4_0-mix</classifier>
                         </configuration>
                     </execution>
                 </executions>
